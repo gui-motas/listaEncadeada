@@ -1,4 +1,4 @@
-package listaEncadeada;
+package src.listaEncadeada;
 
 public class Lista {
 
@@ -9,76 +9,62 @@ public class Lista {
 	}
 
 	public void insert(int data) {
-
-		if (this.start == null) {// se o start tiver apontando pra null, ou seja, não tiver item, vai passar a apontar pra o novo item
+		if (this.start == null) {
 			this.start = new Item(data);
 		} else {
-			Item newItem = new Item(data);
-
-			newItem.next = this.start;//novo item aponta pro que o start estava apontando
-
-			this.start = newItem;// start agora aponta pro novo item
+			Item novoItem = new Item(data);
+			novoItem.next = this.start;
+			this.start = novoItem;
 		}
-
 	}
 
 	private Item findItemAtIndex(int index) {
-
-		// Verificar se o índice é válido
-		if (index < 0 || isEmpty()) {
-			throw new IndexOutOfBoundsException("Índice inválido ou lista vazia.");
+		if (index < 0) {
+			throw new IndexOutOfBoundsException("Índice inválido.");
 		}
-
-		// Percorrer a lista até o índice especificado
 		Item atual = this.start;
-		int atualIndex = 0;
-		while (atual != null && atualIndex < index) {
+		int indexAtual = 0;
+		while (atual != null && indexAtual < index) {
 			atual = atual.next;
-			atualIndexIndex++;
+			indexAtual++;
 		}
-
+		if (atual == null) {
+			throw new IndexOutOfBoundsException("Índice inválido.");
+		}
 		return atual;
 	}
 
 	public Item getLastItem() {
-
-		// Obter o tamanho da lista
-		int size = this.size();
-
-		// Encontrar o item no índice size - 1
-		return findItemAtIndex(size - 1);
+		if (this.start == null) {
+			throw new IndexOutOfBoundsException("Lista vazia.");
+		}
+		Item atual = this.start;
+		while (atual.next != null) {
+			atual = atual.next;
+		}
+		return atual;
 	}
 
-
 	public void insertEnd(int data) {
-
 		if (this.start == null) {
 			insert(data);
 			return;
-		} else {
-			Item ultimo = Item getLastItem();
-			ultimo.next = Item(data);// o que antes era o ultimo agora aponta para o dado inserido
 		}
+		Item ultimoItem = getLastItem();
+		ultimoItem.next = new Item(data);
 	}
-	
-	public void insertMiddle(int data, int index) {
-		if (index < 0 || isEmpty()) {
-			throw new IndexOutOfBoundsException("Índice inválido ou lista vazia.");
-		}
 
-		if (index == 0) {// se index for 0, insere no inicio
+	public void insertMiddle(int data, int index) {
+		if (index < 0) {
+			throw new IndexOutOfBoundsException("Índice inválido.");
+		}
+		if (index == 0) {
 			insert(data);
 			return;
 		}
-
-		// Encontrar o item anterior à posição de inserção
-		Item previousItem = findItemAtIndex(index - 1);
-
-		// Criar o novo item
-		Item newItem = new Item(data);
-
-		// Inserir o novo item após o item anterior
-		newItem.next = previousItem.next;
-		previousItem.next = newItem;
-		}
+		Item itemAnterior = findItemAtIndex(index - 1);
+		Item novoItem = new Item(data);
+		novoItem.next = itemAnterior.next;
+		itemAnterior.next = novoItem;
+	}
 }
