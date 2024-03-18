@@ -1,4 +1,4 @@
-package src.listaEncadeada;
+package listaSimplesmenteEncadeada;
 
 public class Lista {
 
@@ -66,5 +66,26 @@ public class Lista {
 		Item novoItem = new Item(data);
 		novoItem.next = itemAnterior.next;
 		itemAnterior.next = novoItem;
+	}
+
+	public void removeItemAtIdex(int index) {
+		if (index < 0) {
+			throw new IndexOutOfBoundsException("Índice inválido.");
+		}
+		if (index == 0) {
+			if (this.start == null) {
+				this.start = this.start.next;
+			} else {
+				throw new IndexOutOfBoundsException("Lista vazia");
+			}
+			return;
+		}
+		Item itemAnterior = findItemAtIndex(index - 1);
+		
+		if(itemAnterior.next == null) {
+			throw new IndexOutOfBoundsException("Índice Inválido");
+		}
+		itemAnterior.next = itemAnterior.next.next;
+
 	}
 }

@@ -1,4 +1,6 @@
-package src.listaEncadeada;
+package listaSimplesmenteEncadeada;
+
+
 
 public class Item {
 
