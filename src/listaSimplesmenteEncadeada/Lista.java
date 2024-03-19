@@ -81,11 +81,51 @@ public class Lista {
 			return;
 		}
 		Item itemAnterior = findItemAtIndex(index - 1);
-		
-		if(itemAnterior.next == null) {
+
+		if (itemAnterior.next == null) {
 			throw new IndexOutOfBoundsException("Índice Inválido");
 		}
 		itemAnterior.next = itemAnterior.next.next;
 
+	}
+
+	public int getListLenght() {
+		Item atual = this.start.next;
+		int listLenght = 0;
+
+		while (atual.next != null) {
+			atual = atual.next;
+			listLenght++;
+
+		}
+
+		return listLenght;
+
+	}
+
+	public void sortList() {
+	    if (this.start.next == null) {
+	        System.out.println("A lista ainda não tem itens");
+	        return;
+	    }
+
+	    int listLength = getListLenght();
+
+	    for (int i = 0; i < listLength; i++) {
+	        Item current = this.start;
+	        Item next = current.next;
+
+	        for (int j = 0; j < listLength - 1; j++) {
+	            if (current.data > next.data) {
+	                float tempData = current.data;
+	                current.data = next.data;
+	                next.data = tempData;
+	            }
+	            current = current.next;
+	            if (next != null) { // Avoid null pointer exception if next becomes null
+	                next = next.next;
+	            }
+	        }
+	    }
 	}
 }
