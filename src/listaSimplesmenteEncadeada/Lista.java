@@ -113,17 +113,17 @@ public class Lista {
 
 	    for (int i = 0; i < listLength; i++) {
 	        Item current = this.start;
-	        Item next = current.next;
+	      
 
 	        for (int j = 0; j < listLength - 1; j++) {
-	            if (current.data > next.data) {
+	            if (current.data > current.next.data) {
 	                float tempData = current.data;
-	                current.data = next.data;
-	                next.data = tempData;
+	                current.data = current.next.data;
+	                current.next.data = tempData;
 	            }
 	            current = current.next;
-	            if (next != null) { // Avoid null pointer exception if next becomes null
-	                next = next.next;
+	            if (current.next != null) {
+	                current.next = current.next.next;
 	            }
 	        }
 	    }
