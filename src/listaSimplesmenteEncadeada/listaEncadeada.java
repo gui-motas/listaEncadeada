@@ -67,13 +67,13 @@ public static void main(String[]args){
         System.out.println("Exibindo o tamanho da lista");
 
         int length = newList.getListLength();
-        System.out.println( length);
+        System.out.println(length);
 
 
         System.out.println("--------------------------------------------------------");
 
 
-        System.out.println("Embaralhando a lista");
+        System.out.println("Ordenando a lista");
 
         newList.sortList();
         newList.showList();
