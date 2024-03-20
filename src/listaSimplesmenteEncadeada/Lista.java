@@ -128,4 +128,17 @@ public class Lista {
 	        }
 	    }
 	}
+	public void showList() {
+		 if (this.start.next == null) {
+		        System.out.println("A lista ainda não tem itens");
+		        return;
+		    }
+		 Item atual = start.next;
+		 
+		 for (int i =0; i >= getListLenght();i++) {
+			 System.out.println(atual);
+			 atual = atual.next;
+			 
+		 }
+	}
 }
