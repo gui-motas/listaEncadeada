@@ -48,7 +48,7 @@ public static void main(String[]args){
 
         System.out.println("Inserindo o item no meio");
 
-        newList.insertMiddle(222);
+        newList.insertMiddle(222,3);
         newList.showList();
 
 
@@ -57,7 +57,7 @@ public static void main(String[]args){
 
         System.out.println("Escolhendo o item a ser removido");
 
-        newList.removeItemAtIdex( 4);
+        newList.removeItemAtIdex(4);
         newList.showList();
 
 
