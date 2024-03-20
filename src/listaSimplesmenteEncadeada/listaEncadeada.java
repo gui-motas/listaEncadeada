@@ -3,6 +3,7 @@ package listaSimplesmenteEncadeada;
 public class listaEncadeada{
 
 public static void main(String[]args){
+	
 	Lista newList = new Lista();
 
         System.out.println("Inserindo e mostrando itens");
@@ -48,7 +49,7 @@ public static void main(String[]args){
 
         System.out.println("Inserindo o item no meio");
 
-        newList.insertMiddle(222);
+        newList.insertMiddle(222,3);
         newList.showList();
 
 
@@ -67,7 +68,7 @@ public static void main(String[]args){
         System.out.println("Exibindo o tamanho da lista");
 
         int length = newList.getListLength();
-        System.out.println( length);
+        System.out.println(length);
 
 
         System.out.println("--------------------------------------------------------");
